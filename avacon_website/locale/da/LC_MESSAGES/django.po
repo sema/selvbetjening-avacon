@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-27 18:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/eventprice/models.py:76
+msgid "Event price changed (SVS)"
+msgstr ""
+
+#: apps/eventprice/models.py:80
+msgid "Sleeping selections changed (SVS)"
+msgstr ""
+
+#: apps/simpleregistration/forms.py:21
+#, fuzzy
+msgid "Register for event"
+msgstr "Tilmeldte"
+
+#: apps/simpleregistration/forms.py:30
+msgid "Accept terms"
+msgstr "Accepter betingelser"
+
+#: apps/simpleregistration/forms.py:33
+#, python-format
+msgid "I have read and accept the %(brule)sterms of Avacon 2012%(arule)s."
+msgstr "Jeg har læst og accepterer %(brule)sreglerne for Avacon 2012%(arule)s"
+
+#: apps/simpleregistration/forms.py:36
+msgid "You must accept to participate in the event"
+msgstr ""
+
+#: apps/simpleregistration/forms.py:44
+msgid "Name"
+msgstr "Navn"
+
+#: apps/simpleregistration/forms.py:48
+msgid "Your social security number"
+msgstr ""
+
+#: apps/simpleregistration/forms.py:49
+msgid "Please use the format ddmmyy-xxxx"
+msgstr ""
+
+#: apps/simpleregistration/forms.py:64
+msgid "Personal Information"
+msgstr "Personlig information"
+
+#: apps/simpleregistration/forms.py:65
+msgid "Quick Check-In"
+msgstr ""
+
+#: apps/simpleregistration/forms.py:66
+msgid ""
+"As an added service, we plan to provide a new quick check-in queue so you "
+"can enter the venue as quickly as possible. For this, you need a danish "
+"social security card which is to be used to quickly identify your identity "
+"and allow you access. In order to use this queue you must provide your "
+"social security number below.<br/><br/>We are committed to ensure secure "
+"handling of this information at all times. Providing this inforamtion is "
+"optional and you will always be able to use our normal checkin queue."
+msgstr ""
+
+#: apps/simpleregistration/forms.py:67
+msgid "Address"
+msgstr "Adresse"
+
+#: apps/simpleregistration/forms.py:68
+#, fuzzy
+msgid "Contact Information"
+msgstr "Personlig information"
+
+#: apps/simpleregistration/forms.py:101
+msgid "Your CPR number does not match your date of birth."
+msgstr ""
+
+#: templates/site.html:22
+msgid "Registered"
+msgstr "Tilmeldte"
+
+#: templates/site.html:29
+msgid "Paid"
+msgstr "Betalte"
+

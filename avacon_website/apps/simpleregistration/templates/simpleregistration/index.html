@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load uni_form_tags i18n %}
+
+{% block extrastyle %}
+{{ block.super }}
+{% include "form_includes.html" %}
+{% endblock %}
+
+{% block header %}
+
+<div id="banner">
+	<h1><a href="http://avacon.dk">Avacon</a></h1>
+
+	<h2><a href="{% url avacon_index %}">Avacon 2012 tilmelding</a></h2>
+
+	<p>Du kan nu tilmelde dig Avacon 2012 her på siden. Du tilmelder dig ved at udfylde vores <a href="{% url avacon_registration %}">tilmeldingsformular</a>, og derefter betale entre ved hjælp af en bankoverførsel.</p>
+
+	<ul class="table-options">
+		<li>&#187; <a href="http://avacon.dk/">Læs mere om Avacon</a></li>
+		<li>&#187; <a href="mailto:kontakt@avacon.dk">Spørgsmål? Skriv til os</a></li>
+	</ul>
+
+	<a id="registration-link" href="{% url avacon_registration %}">Tilmeld dig Avacon 2012 her!</a>
+
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Allerede tilmeldt? Se din tilmelding her</h2>
+
+<p>Indtast dit brugernavn og kodeord for at <b>rette</b> og se <b>status</b> for din tilmelding.</p>
+
+<div class="login silent-form">
+{% with form.helper as helper %}
+    {% uni_form form helper %}
+{% endwith %}
+</div>
+
+<ul class="table-options">
+    <li>&#187; <a href="{% url auth_password_reset %}">{% trans "Forgot your password?" %}</a></li>
+</ul>
+
+{% endblock %}

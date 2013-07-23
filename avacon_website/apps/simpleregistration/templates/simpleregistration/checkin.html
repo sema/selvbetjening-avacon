@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Avacon quick check-in</title>
+    <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/checkin.css" />
+
+    <script type="text/javascript" charset="utf-8" src="{{MEDIA_URL}}js/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{{MEDIA_URL}}js/jquery-ui-1.8.11.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{{MEDIA_URL}}js/CardReader.js"></script>
+
+    <script type="text/javascript">
+        var cpr_re = /;[0-9]{8}([0-9]{10})[0-9]+/;
+        var read_locked = false;
+
+        jQuery(function () {
+            $('html').ajaxSend(function(event, xhr, settings) {
+                function getCookie(name) {
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie != '') {
+                        var cookies = document.cookie.split(';');
+                        for (var i = 0; i < cookies.length; i++) {
+                            var cookie = jQuery.trim(cookies[i]);
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+                if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                    // Only send the token to relative URLs i.e. locally.
+                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                }
+            });
+
+            // Create a new reader instance
+            var reader = new CardReader();
+
+            // Feed it an object to observe (this could also be a textbox)
+            reader.observe(window);
+
+            // Errback in case of a reading error
+            reader.cardError(function () {
+                if (read_locked) {
+    return;
+                } else {
+                    read_locked = true;
+                }
+
+                enterReadErrorState();
+            });
+
+            // Callback in case of a successful reading operation
+            reader.cardRead(function (value) {
+                if (read_locked) {
+                    return;
+                } else {
+                    read_locked = true;
+                }
+                match = cpr_re.exec(value);
+
+                if (match != null && match.length > 0) {
+                    //console.log("Matched value " + value); // DEBUG
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url avacon_checkin_callback %}",
+                        data: { cpr: match[1] },
+                        timeout: 5000,
+                        success: handleLookupResponse,
+                        error: handleServerError,
+                        dataType: "json",
+                    });
+
+                } else {
+                    //console.log("Error when reading value " + value); // DEBUG
+                    enterReadErrorState();
+                }
+            });
+
+            reader.validate(function (value) {
+                return (value != "EæE" && value != "E" && value != "EæEÈ");
+            });
+        });
+
+        var handleServerError = function(jqXHR, textStatus, errorThrown) {
+            //$("body").html(jqXHR.responseText); // DEBUG
+            enterServerErrorState();
+        }
+
+        var handleLookupResponse = function(data, textStatus, jqXHR) {
+            if (data.success == true) {
+                if (data.can_sleep && data.can_sleep == true) {
+                    enterAcceptedAndSleepState(data.name);
+                } else {
+                    enterAcceptedState(data.name);
+                }
+            } else {
+                if (data.response) {
+                    enterRejectedState(data.response);
+                } else {
+                    enterRejectedState();
+                }
+            }
+
+        }
+
+        var thinkState = -1
+        var think = function() {
+            thinkState = (thinkState + 1) % 3
+            thinkDisplay = $("#thinking")
+
+            if (thinkState == 0) {
+                thinkDisplay.html(".&nbsp;&nbsp;")
+            } else if (thinkState == 1) {
+                thinkDisplay.html("..&nbsp;")
+            } else {
+                thinkDisplay.html("...")
+            }
+
+            setTimeout(think, 1000);
+        }
+
+        currentStateDisplay = null;
+
+        var enterReadyState = function() {
+            currentStateDisplay.fadeOut(500, function() {
+                currentStateDisplay = $("#ready");
+
+                $("#ready").fadeIn(500, function() {
+                    read_locked = false;
+                });
+                $("body").animate({backgroundColor: "#FFFFFF"}, 500);
+
+            });
+        }
+
+        var enterAcceptedState = function(name) {
+            currentStateDisplay.fadeOut(500, function() {
+                currentStateDisplay = $("#accepted");
+
+                $("#accepted").fadeIn();
+                $("body").animate({backgroundColor: "#E4FFC9"}, 500);
+
+                if (name) {
+                    $("#accepted h1").html(name);
+                }
+
+                setTimeout(enterReadyState, 5000);
+            });
+        }
+
+        var enterAcceptedAndSleepState = function(name) {
+            currentStateDisplay.fadeOut(500, function() {
+                currentStateDisplay = $("#accepted-and-sleep");
+
+                $("#accepted-and-sleep").fadeIn();
+                $("body").animate({backgroundColor: "#C9DFFF"}, 500);
+
+                if (name) {
+                    $("#accepted-and-sleep h1").html(name);
+                }
+
+                setTimeout(enterReadyState, 5000);
+            });
+        }
+
+        var enterRejectedState = function(message) {
+            currentStateDisplay.fadeOut(500, function() {
+                currentStateDisplay = $("#rejected");
+
+                if (message) {
+                    $("#rejected h3").html(message);
+                }
+
+                $("#rejected").fadeIn();
+                $("body").animate({backgroundColor: "#FF3F3F"}, 500);
+
+                setTimeout(enterReadyState, 5000);
+            });
+        }
+
+        var enterReadErrorState = function() {
+            currentStateDisplay.fadeOut(500, function() {
+                currentStateDisplay = $("#readerror");
+
+                $("#readerror").fadeIn();
+
+                setTimeout(enterReadyState, 2000);
+            });
+        }
+
+        var enterServerErrorState = function() {
+            currentStateDisplay.fadeOut(500, function() {
+                currentStateDisplay = $("#servererror");
+
+                $("#servererror").fadeIn();
+
+                setTimeout(enterReadyState, 2000);
+            });
+        }
+
+        jQuery(function () {
+            currentStateDisplay = $("#ready");
+            think();
+        });
+    </script>
+</head>
+<body>
+
+<div id="banner">
+
+    <img src="{{MEDIA_URL}}images/svs-con.png" /> <br/>
+    <h1>Quick Check-In</h1>
+
+</div>
+
+<div id="activearea">
+    <div id="ready">
+        <h1>Klar</h1>
+        <h2>Indlæs dit sygesikringsbevis<span id="thinking">...</span></h2>
+        <img src="{{MEDIA_URL}}images/card.jpg" />
+    </div>
+    <div id="accepted">
+        <h2>Velkommen til</h2>
+        <h1></h1>
+        <img src="{{MEDIA_URL}}images/accepted.png" />
+        <h2>Fortsæt til næste bord for at modtage dit SVS-armbånd</h2>
+    </div>
+    <div id="accepted-and-sleep">
+        <h2>Velkommen til</h2>
+        <h1></h1>
+        <img src="{{MEDIA_URL}}images/accepted.png" />
+        <img src="{{MEDIA_URL}}images/plus.png" class="plus" />
+        <img src="{{MEDIA_URL}}images/sleep.png" />
+        <h2>Fortsæt til næste bord for at modtage dit SVS-armbånd</h2>
+    </div>
+    <div id="rejected">
+        <h1>Vi beklager...</h1>
+        <h2>men vi kan ikke checke dig ind her</h2>
+        <img src="{{MEDIA_URL}}images/rejected2.png" />
+        <h3></h3>
+        <h2>Gå venligst til check-in bordet for personlig betjening</h2>
+    </div>
+    <div id="readerror">
+        <h1>Prøv igen</h1>
+        <h2>Fejl ved læsning af kort, prøv venligst igen</h2>
+        <img src="{{MEDIA_URL}}images/card.jpg" />
+    </div>
+    <div id="servererror">
+        <h1>Prøv igen</h1>
+        <h2>Der skete en fejl på vores server, prøv venligst igen</h2>
+        <img src="{{MEDIA_URL}}images/card.jpg" />
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-03 18:30+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:26
+msgid "Register for event"
+msgstr "Tilmeld dig eventet"
+
+#: forms.py:35
+msgid "Accept terms"
+msgstr "Accepter betingelser"
+
+#: forms.py:38
+#, python-format
+msgid "I have read and accept the %(brule)sterms of Avacon 2012%(arule)s."
+msgstr "Jeg har læst og accepterer %(brule)sreglerne for Avacon 2012%(arule)s."
+
+#: forms.py:41
+msgid "You must accept to participate in the event"
+msgstr "Du skal acceptere dette for at kunne deltage"
+
+#: forms.py:90
+msgid "Name"
+msgstr "Navn"
+
+#: forms.py:94
+msgid "Your social security number"
+msgstr "Dit CPR-nummer"
+
+#: forms.py:95
+msgid "Please use the format ddmmyy-xxxx"
+msgstr "Brug venligst formatet ddmmyy-xxxx"
+
+#: forms.py:108
+msgid "Street and house number "
+msgstr "Vej og husnummer"
+
+#: forms.py:113
+msgid "Personal Information"
+msgstr "Personlig information"
+
+#: forms.py:114
+msgid "User Account"
+msgstr "Brugerkonto"
+
+#: forms.py:115
+msgid ""
+"With your user account you will be able to review your current registration, "
+"such as seeing if we have registered your payment yet. You will also be able "
+"to change your choices regarding attendance to the cosplay show as long as "
+"we haven't registered your payment yet."
+msgstr ""
+"Med din brugerkonto vil du kunne få et overblik over din tilmelding og "
+"status for betaling. Så længe vi ikke har registeret din betaling vil du "
+"også kunne tilmelde og framelde dig som gopher og cosplay showet."
+
+#: forms.py:116
+msgid "Quick Check-In"
+msgstr "Quick check-in kø"
+
+#: forms.py:117
+msgid ""
+"Use our quick check-in queue to enter the venue as quickly as possible. In "
+"order to use this queue you will need your danish social security card to "
+"quickly identify your identity and allow you access. For this to work, you "
+"must provide your danish social security number below.<br/><br/><i>We are "
+"committed to ensure secure handling of this information at all times. "
+"Providing this inforamtion is optional and you will always be able to use "
+"our normal check-in queue.</i>"
+msgstr ""
+"Som en udvidet service har vi en quick check-in kø så du kan komme ind på "
+"connen så hurtigt som muligt. For at kunne bruge denne kø skal du bruge dit "
+"gule sygesikringskort og vi skal derfor også have dit CPR-nummer.<br/><br/"
+"><i>Vi vil til enhver tid beskytte dit CPR-nummer så vidt muligt (f.eks.  "
+"vil det aldrig blive gemt i klar-tekst). Hvis du ikke ønsker at opgive dit "
+"CPR-nummer vil du stadig kunne komme ind på connen igennem vores almindelige "
+"check-in kø.</i>"
+
+#: forms.py:118
+msgid "Address"
+msgstr "Adresse"
+
+#: forms.py:119
+msgid "Contact Information"
+msgstr "Kontaktinformation"
+
+#: forms.py:120
+msgid ""
+"Please notice that you are only allowed to register once for each e-mail."
+msgstr "Bemærk at du kun kan lave en tilmelding pr. e-mail adresse."
+
+#: forms.py:162
+msgid ""
+"This e-mail address has already been used. Please only register once, and "
+"change your existing registration if necessary."
+msgstr ""
+"Denne e-mail er allerede blevet brugt. Vi vil gerne bede dig om kun at "
+"tilmelde dig en gang i vores system, og i stedet ændre din eksisterende "
+"tilmelding om nødvendigt."
+
+#: forms.py:197
+msgid "Your CPR number does not match your date of birth."
+msgstr "Dit CPR-nummer stemmer ikke overens med din fødselsdato."
+
+#: forms.py:232
+msgid "Street and house number"
+msgstr "Vej og husnummer"
+
+#: forms.py:234
+msgid "Postal code"
+msgstr "Postnummer"
+
+#: forms.py:238
+msgid "City"
+msgstr "By"
+
+#: forms.py:241
+msgid "Country"
+msgstr "Land"
+
+#: forms.py:248
+msgid "Account number"
+msgstr "Kontonummer"
+
+#: forms.py:250
+msgid "Registration number"
+msgstr "Registreringsnummer"
+
+#: forms.py:252
+msgid "Name of you bank"
+msgstr "Banknavn"
+
+#: forms.py:254
+msgid "Child-certificate"
+msgstr "Børneattest"
+
+#: forms.py:260
+msgid ""
+"All gophers are required to have a clean danish child-certificate. We will "
+"send the necessary paperwork which you must sign the the address given "
+"below. Please notice that we require you to sign this in due time in order "
+"to be allowed in as a gopher."
+msgstr ""
+"For at være gopher skal du kunne fremvise en ren børneattest. For at vi kan "
+"indhente denne fra politiet skal vi sende dig et dokument, som du skal "
+"underskrive og sende retur til os igen. Nedenfor kan du oplyse hvilken "
+"adresse vi må sende dette dokument til."
+
+#: forms.py:261
+msgid "Bank Info"
+msgstr "Tilbagebetaling af entre"
+
+#: forms.py:266
+msgid ""
+"As a gopher you are given exempted from enterance fees and a given a free "
+"sleeping spot. Initially, you are stille required to pay the full enterance "
+"fee, which will be paid back to you after the convention and a well done job "
+"as a gopher. Please fill in your bank-account details below such that we can "
+"transfer the money back to you."
+msgstr ""
+"Som gopher har du gratis adgang samt en gratis soveplads. Indledningsvis "
+"skal du dog stadig betale entre, hvor vi efter SVS tilbagebetaler dette "
+"beløb til den bankkonto du oplyser nedenfor."
+
+#: models.py:30
+msgid "street"
+msgstr "Gade"
+
+#: models.py:31
+msgid "postal code"
+msgstr "Postnummer"
+
+#: models.py:32
+msgid "city"
+msgstr "By"
+
+#: sadmin.py:41
+msgid "E-mails have been sent again to the user"
+msgstr ""
+
+#: templates/simpleregistration/change_options.html:9
+#: templates/simpleregistration/parts/menu.html:4
+msgid "Change your registration"
+msgstr "Ændre din tilmelding"
+
+#: templates/simpleregistration/change_options.html:17
+msgid ""
+"<p>You can change parts of your registration below. Please notice that we "
+"will lock your registration as soon as we register your payment. If you want "
+"to change your registration after this time you will need to get in touch "
+"with us.</p>"
+msgstr ""
+"<p>Du kan frit ændre dele af din tilmelding nedenfor. Bemærk venligst at vi "
+"låser din tilmelding så snart vi har registreret din betaling. Ønsker du at "
+"ændre din tilmelding efter vi har låst den bedes du tage kontakt til os."
+
+#: templates/simpleregistration/index.html:68
+msgid "Forgot your password?"
+msgstr "Glemt dit kodeord?"
+
+#: templates/simpleregistration/status.html:4
+msgid "Your Registration"
+msgstr "Din tilmelding"
+
+#: templates/simpleregistration/parts/menu.html:3
+msgid "Your registration"
+msgstr "Din tilmelding"
+
+#~ msgid "Invalid country selected"
+#~ msgstr "Ukendt land valgt"

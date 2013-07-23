@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/uni-form.css" media="screen, projection" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script>
+<link href="{{ STATIC_URL }}css/datepicker.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+function update_child_inputs(parent_input) {
+    if ((parent_input.attr("checked") == false && parent_input.attr("disabled") == false) ||
+        (parent_input.attr("disabled") == true)) {
+        parent_input.parents("div.ctrlHolder").children(".child_input").attr("disabled", "true")
+    } else {
+        parent_input.parents("div.ctrlHolder").children(".child_input").removeAttr("disabled")
+    }
+}
+</script>

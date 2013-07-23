@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load uni_form_tags %}
+
+{% block extrastyle %}
+{{ block.super }}
+{% include "form_includes.html" %}
+{% endblock %}
+
+{% block contenthead %}Tilmeldingsformular{% endblock %}
+
+{% block content %}
+
+    <p>Udfyld tilmeldingsformularen nedenfor for at tilmelde dig <a href="http://avacon.dk">Avacon 2012</a>. Så snart du har udfyldt formularen vil du blive vidersendt til <b>"din tilmelding"</b> siden hvor du kan se hvad du skal betale i entre og hvordan du betaler. Du vil også modtage en e-mail med disse oplysninger.</p>
+
+    <p><b>Bemærk at din tilmelding først er gældende når vi har registreret din betaling.</b></p>
+
+    <p>Har du spørgsmål omkring tilmeldingen så <a href="mailto:kontakt@avacon.dk">skriv en e-mail til os</a>.</p>
+
+<form method="POST" action="" class="uniForm">
+
+{% with userform.helper as helper %}
+    {% uni_form userform helper %}
+{% endwith %}
+
+{% if event.has_options %}
+    {% for optiongroupform in optionforms %}
+        {% with optiongroupform.helper as helper %}
+            {% uni_form optiongroupform helper %}
+        {% endwith %}
+    {% endfor %}
+{% endif %}
+
+<div class="silent-form">
+{% with signupsubmitform.helper as helper %}
+    {% uni_form signupsubmitform helper %}
+{% endwith %}
+</div>
+
+</form>
+
+{% endblock %}
