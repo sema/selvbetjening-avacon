@@ -12,10 +12,6 @@ h1 {
   font-size: 2.0em;
 }
 
-a {
-  color: #AA1818;
-}
-
 p, li {
 font-size: 1.0em;
 }
@@ -34,26 +30,23 @@ font-size: 1.0em;
 }
 
 #inner-content {
-  margin: 0 1em 0 1em;
+  margin: 1em 1em 0 1em;
 }
 
 fieldset {
   text-align: justify;
 }
 
+/* Forms */
+
+legend {
+    margin-bottom: 0em;
+}
+
 /* Banner */
 
 #banner {
   overflow: auto;
-}
-
-#mascot {
-  float: right;
-}
-
-#mascot img {
-  width: 200px;
-  border-style: none;
 }
 
 #logo {
@@ -93,7 +86,7 @@ fieldset {
 }
 
 #registration-link {
-  background-color: #AA1818;
+  background-color: #0088CC;
   color: #FFFFFF;
   display: block;
   padding: 1em;

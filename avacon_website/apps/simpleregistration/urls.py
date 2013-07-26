@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 
-from selvbetjening.portal.profile.forms import LoginForm
+from selvbetjening.portal.profile.forms import LoginForm, CrispySetPasswordForm, CrispyPasswordResetForm
 from selvbetjening.portal.eventregistration import views as eventregistration_views
 
 import views
@@ -34,15 +34,17 @@ urlpatterns = patterns('',
 
     url(r'^nulstil-kodeord/$', auth_views.password_reset,
         {'template_name':'profile/password_reset/password_reset.html',
-         'email_template_name':'simpleregistration/password_reset_email.html'}, name='auth_password_reset'),
+         'password_reset_form': CrispyPasswordResetForm,
+         'email_template_name':'profile/password_reset/password_reset_email.html'}, name='auth_password_reset'),
     url(r'^nulstil-kodeord/email-sendt/$', auth_views.password_reset_done,
         {'template_name':'profile/password_reset/password_reset_done.html'},
         name='members_password_reset_done'),
     url(r'^nulstil-kodeord/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/', auth_views.password_reset_confirm,
-        {'template_name':'profile/password_reset/password_reset_confirm.html'},
+        {'template_name':'profile/password_reset/password_reset_confirm.html',
+         'set_password_form': CrispySetPasswordForm},
         name='auth_password_reset_confirm'),
     url(r'^nulstil-kodeord/reset/done/$', auth_views.password_reset_complete,
-        {'template_name':'simpleregistration/password_reset_done.html'}),
+        {'template_name':'profile/password_reset/password_reset_complete.html'}),
 
     url(r'^$',
         auth_views.login,
