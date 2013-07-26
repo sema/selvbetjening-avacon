@@ -1,15 +1,14 @@
-from django.conf.urls.defaults import *
-from django.conf import settings
-from django.utils.translation import ugettext as _
-from django.core.urlresolvers import reverse
+from django.conf.urls import *
 
 from selvbetjening.sadmin.base import sadmin
-from selvbetjening.sadmin.base.nav import DirectPage, RemoteSPage
 
-# workaround for missing urls
-from selvbetjening.sadmin.members import models as members_models
-from selvbetjening.sadmin.events import models as event_models
-from selvbetjening.sadmin.mailcenter import models as mail_models
+from selvbetjening.sadmin.members.models import MembersRootAdmin
+from selvbetjening.sadmin.events.models import EventsRootAdmin
+from selvbetjening.sadmin.mailcenter.models import MailcenterRootAdmin
+
+sadmin.site.register('members', MembersRootAdmin)
+sadmin.site.register('events', EventsRootAdmin)
+sadmin.site.register('mailcenter', MailcenterRootAdmin)
 
 urlpatterns = patterns('',
     (r'^sadmin/', include(sadmin.site.urls)),

@@ -11,25 +11,13 @@ SERVER_EMAIL = 'noreply@avacon.dk'
 ROOT_URLCONF = 'avacon_website.urls'
 
 ADMINS = (
-    ('Casper S. Jensen', 'the@sema.dk'),
-)
-
-LANGUAGES = (
-  ('da-dk', 'Dansk'),
-)
-
-MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
-    'django.middleware.locale.LocaleMiddleware',
+    #('name', 'email'),
 )
 
 # template directories
 TEMPLATE_DIRS = [
     os.path.join(DIRNAME, 'templates')
 ] + TEMPLATE_DIRS
-
-STATICFILES_DIRS = (
-    os.path.join(DIRNAME, 'static'),
-)
 
 # installed applications
 INSTALLED_APPS.extend([
@@ -43,6 +31,7 @@ INSTALLED_APPS.extend([
     'selvbetjening.portal.profile',
     'selvbetjening.portal.eventregistration',
 
+    'avacon_website.apps.base',
     'avacon_website.apps.simpleregistration',
 
     'selvbetjening.sadmin.base',

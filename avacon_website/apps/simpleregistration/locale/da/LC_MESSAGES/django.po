@@ -27,8 +27,8 @@ msgstr "Accepter betingelser"
 
 #: forms.py:38
 #, python-format
-msgid "I have read and accept the %(brule)sterms of Avacon 2012%(arule)s."
-msgstr "Jeg har læst og accepterer %(brule)sreglerne for Avacon 2012%(arule)s."
+msgid "I have read and accept the %(brule)sterms of Avacon 2013%(arule)s."
+msgstr "Jeg har læst og accepterer %(brule)sreglerne for Avacon 2013%(arule)s."
 
 #: forms.py:41
 msgid "You must accept to participate in the event"

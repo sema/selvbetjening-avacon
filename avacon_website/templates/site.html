@@ -4,14 +4,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Avacon tilmelding</title>
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css" />
+
 	{% block extrastyle %}{% endblock %}
 </head>
 <body>
 <div id="global">
 
 	{% block header %}
-	<h1 id="logo"><a href="{% url avacon_index %}">Avacon 2012</a></h1>
+	<h1 id="logo"><a href="{% url "avacon_index" %}">Avacon 2013</a></h1>
 	<h1>{% block contenthead %}{% endblock %}</h1>{% endblock %}
 	{% block sub_content_head %}{% endblock %}
 
@@ -33,7 +36,7 @@
 
 </div>
 
-<p id="copyright">Copyright 2009 - 2012 &copy; Avacon<br/>Powered by <a href="http://www.anime-kita.dk/intranet/teknik-raadet/selvbetjening">Selvbetjening</a></p>
+<p id="copyright">Copyright 2009 - 2013 &copy; Avacon<br/>Powered by <a href="https://github.com/animekita/selvbetjening/">Selvbetjening</a></p>
 
 <script type="text/javascript">
 
